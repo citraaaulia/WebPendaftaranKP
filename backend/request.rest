@@ -1,0 +1,16 @@
+GET http://localhost:80443/users
+
+###
+GET http://localhost:80443/login
+Content-Type: application/json
+
+{
+    "NIM" : "2111521022",
+    "Password" : "12345"
+}
+
+###
+GET http://localhost:80443/token
+
+###
+DELETE http://localhost:80443/logout
