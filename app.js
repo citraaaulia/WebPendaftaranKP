@@ -3,25 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mysql = require('mysql');
 var dotenv = require('dotenv');
 
-dotenv.convig({ path: './.env'});
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var db = mysql.createConnection()
-
-var app = express();
-
-app.get("/", (req, res)=>{
-  res.send("<h1>Home Page<h1>")
-})
-
-app.listen(8000, ()=>{
-  console.log("server started on port 8000")
-})
+var indexRouter = require('./backend/routes/index');
+var usersRouter = require('./backend/routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,3 +40,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
